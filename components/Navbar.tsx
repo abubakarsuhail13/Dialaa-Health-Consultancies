@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
   isScrolled: boolean;
@@ -17,40 +18,55 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">D</div>
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center space-x-3"
+          >
+            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-teal-600/20">D</div>
             <div className="flex flex-col">
-              <span className={`font-bold text-lg leading-tight ${isScrolled ? 'text-teal-900' : 'text-teal-800'}`}>DIALAA</span>
-              <span className="text-[10px] tracking-widest uppercase text-slate-500 font-semibold">Health Consultancies</span>
+              <span className={`font-black text-lg tracking-tight leading-tight ${isScrolled ? 'text-slate-900' : 'text-slate-800'}`}>DIALAA</span>
+              <span className="text-[9px] tracking-[0.2em] uppercase text-teal-600 font-bold">Health Consultancies</span>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
-              <a
+          <div className="hidden md:flex space-x-10">
+            {navLinks.map((link, idx) => (
+              <motion.a
                 key={link.name}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * idx }}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-teal-600 ${isScrolled ? 'text-slate-700' : 'text-slate-800'}`}
+                className={`text-sm font-semibold transition-all hover:text-teal-600 relative group ${isScrolled ? 'text-slate-600' : 'text-slate-700'}`}
               >
                 {link.name}
-              </a>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-all group-hover:w-full"></span>
+              </motion.a>
             ))}
           </div>
 
-          <div className="hidden md:block">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="hidden md:block"
+          >
             <a
               href="tel:0557198392"
-              className="bg-teal-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-teal-700 transition-colors"
+              className="bg-teal-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-teal-700 transition-all shadow-lg shadow-teal-600/30 active:scale-95 flex items-center space-x-2"
             >
-              Call 0557198392
+              <span>Call 055 719 8392</span>
             </a>
-          </div>
+          </motion.div>
 
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-800">
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className={`p-2 rounded-lg transition-colors ${isScrolled ? 'text-slate-900' : 'text-slate-800'}`}
+            >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -64,26 +80,37 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t mt-3 p-4 space-y-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="block text-slate-700 font-medium py-2"
-            >
-              {link.name}
-            </a>
-          ))}
-          <a
-            href="tel:0557198392"
-            className="block w-full bg-teal-600 text-white text-center px-5 py-3 rounded-xl font-semibold"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-t border-slate-100 overflow-hidden"
           >
-            Call Now
-          </a>
-        </div>
-      )}
+            <div className="p-6 space-y-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-slate-700 font-bold text-lg py-2 hover:text-teal-600 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="pt-4 border-t border-slate-50">
+                <a
+                  href="tel:0557198392"
+                  className="block w-full bg-teal-600 text-white text-center px-5 py-4 rounded-2xl font-bold shadow-xl shadow-teal-600/20"
+                >
+                  Call Specialist Now
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
