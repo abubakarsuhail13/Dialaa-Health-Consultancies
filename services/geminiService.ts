@@ -1,8 +1,4 @@
-
-import { GoogleGenAI, Type } from "@google/genai";
-
-// Initialize the Gemini API client using the API_KEY directly from environment variables
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+import { GoogleGenAI } from "@google/genai";
 
 const SYSTEM_INSTRUCTION = `
 You are an expert UAE Healthcare Licensing Assistant for Dialaa Health Consultancies, representing Dr. Maryam Ibraheem.
@@ -19,7 +15,9 @@ Keep responses concise and formatted with markdown.
 
 export const getGeminiResponse = async (prompt: string) => {
   try {
-    // Correctly call generateContent on the ai.models object with both model and contents
+    // Initialize inside the function to ensure process.env.API_KEY is captured correctly from the injected define
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
@@ -28,10 +26,10 @@ export const getGeminiResponse = async (prompt: string) => {
         temperature: 0.7,
       },
     });
-    // Accessing the .text property directly as it is a getter, not a method call
+    
     return response.text;
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "I'm sorry, I'm having trouble connecting right now. Please call us directly at 0557198392.";
+    return "I'm sorry, I'm having trouble connecting right now. Please call us directly at 055 719 8392 for immediate assistance.";
   }
 };
