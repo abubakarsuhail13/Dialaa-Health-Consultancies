@@ -37,34 +37,51 @@ Rules:
 `;
 
 export const getGeminiResponse = async (userMessage: string, history: ChatMessage[]) => {
+  // Always verify that the API key is present in environment variables
+  if (!process.env.API_KEY) {
+    console.error("API Key is missing in environment variables.");
+    return "I apologize, but my configuration is incomplete. Please contact our team directly at **055 719 8392** for professional assistance.";
+  }
+
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    // Initializing the AI client directly with process.env.API_KEY as per the coding guidelines
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
-    // Map existing history to the format expected by the API
-    const contents = history.map(msg => ({
-      role: msg.role,
-      parts: [{ text: msg.text }]
-    }));
+    // Gemini conversation history MUST start with a 'user' turn.
+    // We filter the history to ensure the first message is 'user'.
+    const validHistory = [];
+    let foundFirstUserTurn = false;
 
-    // Add the current user message
-    contents.push({
-      role: 'user',
-      parts: [{ text: userMessage }]
-    });
+    for (const msg of history) {
+      if (!foundFirstUserTurn && msg.role === 'user') {
+        foundFirstUserTurn = true;
+      }
+      if (foundFirstUserTurn) {
+        validHistory.push({
+          role: msg.role,
+          parts: [{ text: msg.text }]
+        });
+      }
+    }
 
+    // Use generateContent with the gemini-3-flash-preview model for high-speed expert responses
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: contents,
+      contents: [
+        ...validHistory,
+        { role: 'user', parts: [{ text: userMessage }] }
+      ],
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
-        temperature: 0.3, // Lower temperature for more consistent professional responses
+        temperature: 0.2, // Low temperature for high precision and professionalism
         topP: 0.8,
       },
     });
     
+    // Extracting text output directly from the response object
     return response.text;
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "I apologize, but I am experiencing a technical interruption. For immediate professional assistance regarding your healthcare licensing, please contact our team directly at **055 719 8392**.";
+    console.error("Gemini API Error details:", error);
+    return "I apologize, but I am experiencing a temporary technical interruption in my professional consulting module. For immediate assistance with your UAE healthcare licensing, please reach out to Dr. Maryam's office directly at **055 719 8392**.";
   }
 };
