@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -7,6 +6,7 @@ import Services from './components/Services';
 import Competencies from './components/Competencies';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AIChatbot from './components/AIChatbot';
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,6 +46,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
+      <AIChatbot />
     </div>
   );
 };
