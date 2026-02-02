@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -26,10 +25,10 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center space-x-3"
           >
-            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-teal-600/20">D</div>
+            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-teal-600/20">H</div>
             <div className="flex flex-col">
-              <span className={`font-black text-lg tracking-tight leading-tight ${isScrolled ? 'text-slate-900' : 'text-slate-800'}`}>DIALAA</span>
-              <span className="text-[9px] tracking-[0.2em] uppercase text-teal-600 font-bold">Health Consultancies</span>
+              <span className={`font-black text-lg tracking-tight leading-tight ${isScrolled ? 'text-slate-900' : 'text-slate-800'}`}>HEALTHCARE</span>
+              <span className="text-[9px] tracking-[0.2em] uppercase text-teal-600 font-bold">Consultancy Group</span>
             </div>
           </motion.div>
 
@@ -55,10 +54,10 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             className="hidden md:block"
           >
             <a
-              href="tel:0557198392"
+              href="tel:+971000000000"
               className="bg-teal-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-teal-700 transition-all shadow-lg shadow-teal-600/30 active:scale-95 flex items-center space-x-2"
             >
-              <span>Call 055 719 8392</span>
+              <span>Call +971 00 000 0000</span>
             </a>
           </motion.div>
 
@@ -101,7 +100,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
               ))}
               <div className="pt-4 border-t border-slate-50">
                 <a
-                  href="tel:0557198392"
+                  href="tel:+971000000000"
                   className="block w-full bg-teal-600 text-white text-center px-5 py-4 rounded-2xl font-bold shadow-xl shadow-teal-600/20"
                 >
                   Call Specialist Now

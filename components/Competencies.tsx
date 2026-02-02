@@ -1,31 +1,30 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
 const Competencies: React.FC = () => {
   const comps = [
     {
-      title: "Strategy & Governance",
-      desc: "Robust frameworks for facility growth and long-term sustainability.",
-      icon: "📊",
+      title: "Healthcare Strategy",
+      desc: "High-level management and strategic planning for established medical facilities and startups.",
+      icon: "🏢",
       color: "bg-blue-50 text-blue-600"
     },
     {
-      title: "Clinical Insight",
-      desc: "Direct dentist perspective ensuring the highest patient care standards.",
-      icon: "🦷",
+      title: "Clinical Care",
+      desc: "Deep expertise in Clinical Dentistry and patient care standards across the UAE.",
+      icon: "🩺",
       color: "bg-teal-50 text-teal-600"
     },
     {
-      title: "Compliance Mastery",
-      desc: "Unrivaled expertise in DHA, MOH, and DOH regulatory navigation.",
-      icon: "⚖️",
+      title: "Regulatory Licensing",
+      desc: "End-to-end facility licensing and DHA/MOH regulatory compliance expertise.",
+      icon: "📜",
       color: "bg-amber-50 text-amber-600"
     },
     {
-      title: "Operation Logic",
-      desc: "Optimized patient flows and staff management systems.",
-      icon: "⚙️",
+      title: "Operational Excellence",
+      desc: "Optimizing healthcare operations for maximum efficiency and patient satisfaction.",
+      icon: "📈",
       color: "bg-rose-50 text-rose-600"
     }
   ];
@@ -38,11 +37,12 @@ const Competencies: React.FC = () => {
         viewport={{ once: true }}
         className="text-center mb-20"
       >
-        <h2 className="text-3xl font-bold text-slate-900 mb-4">Core Competencies</h2>
-        <div className="w-16 h-1 bg-teal-600 mx-auto rounded-full" />
+        <p className="text-teal-600 font-black uppercase tracking-[0.3em] text-[10px] mb-4">What we do best</p>
+        <h2 className="text-4xl font-black text-slate-900 mb-6">Core Competencies</h2>
+        <div className="w-20 h-1.5 bg-teal-600 mx-auto rounded-full" />
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {comps.map((comp, idx) => (
           <motion.div 
             key={idx}
@@ -50,14 +50,14 @@ const Competencies: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            whileHover={{ y: -8 }}
-            className="flex flex-col items-center text-center p-8 rounded-3xl hover:bg-slate-50 transition-colors group"
+            whileHover={{ y: -10 }}
+            className="flex flex-col items-center text-center p-10 rounded-[2.5rem] bg-slate-50/50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 transition-all group"
           >
-            <div className={`w-16 h-16 ${comp.color} rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm group-hover:shadow-lg transition-all`}>
+            <div className={`w-20 h-20 ${comp.color} rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-sm group-hover:scale-110 transition-transform duration-500`}>
               {comp.icon}
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-tight">{comp.title}</h3>
-            <p className="text-slate-500 text-sm leading-relaxed">{comp.desc}</p>
+            <h3 className="text-lg font-black text-slate-900 mb-4 tracking-tight leading-tight">{comp.title}</h3>
+            <p className="text-slate-500 text-sm leading-relaxed font-medium">{comp.desc}</p>
           </motion.div>
         ))}
       </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -12,9 +11,9 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl font-bold mb-8 leading-tight">Let's Build Your <span className="text-teal-400">Legacy</span></h2>
+          <h2 className="text-5xl font-bold mb-8 leading-tight">Let's Build Your <span className="text-teal-400">Vision</span></h2>
           <p className="text-slate-400 text-xl mb-12 leading-relaxed font-light">
-            Ready to secure your medical license or open your next clinic? Our expert consultants are just a message away from helping you succeed in the UAE.
+            Ready to secure your medical license or open your next clinic? Our expert consultants are ready to guide your success in the UAE.
           </p>
           
           <div className="space-y-10">
@@ -27,7 +26,7 @@ const Contact: React.FC = () => {
               </div>
               <div>
                 <p className="text-teal-500 text-xs uppercase font-black tracking-widest mb-1">Direct Call</p>
-                <a href="tel:0557198392" className="text-2xl font-bold tracking-tight">055 719 8392</a>
+                <a href="tel:+971000000000" className="text-2xl font-bold tracking-tight">+971 00 000 0000</a>
               </div>
             </motion.div>
 
@@ -39,8 +38,8 @@ const Contact: React.FC = () => {
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </div>
               <div>
-                <p className="text-teal-500 text-xs uppercase font-black tracking-widest mb-1">Location</p>
-                <p className="text-2xl font-bold tracking-tight">Dubai, UAE</p>
+                <p className="text-teal-500 text-xs uppercase font-black tracking-widest mb-1">Office Location</p>
+                <p className="text-2xl font-bold tracking-tight">Main Business District, UAE</p>
               </div>
             </motion.div>
           </div>
@@ -57,17 +56,17 @@ const Contact: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase text-slate-400 tracking-wider">Full Name</label>
-                <input type="text" className="w-full px-5 py-4 bg-slate-50 border-b-2 border-slate-100 rounded-xl focus:outline-none focus:border-teal-500 transition-all font-medium" placeholder="Dr. Sarah Johnson" />
+                <input type="text" className="w-full px-5 py-4 bg-slate-50 border-b-2 border-slate-100 rounded-xl focus:outline-none focus:border-teal-500 transition-all font-medium" placeholder="Your Name" />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase text-slate-400 tracking-wider">Email</label>
-                <input type="email" className="w-full px-5 py-4 bg-slate-50 border-b-2 border-slate-100 rounded-xl focus:outline-none focus:border-teal-500 transition-all font-medium" placeholder="sarah@medical.ae" />
+                <input type="email" className="w-full px-5 py-4 bg-slate-50 border-b-2 border-slate-100 rounded-xl focus:outline-none focus:border-teal-500 transition-all font-medium" placeholder="your@email.com" />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-xs font-black uppercase text-slate-400 tracking-wider">Consultation Type</label>
               <select className="w-full px-5 py-4 bg-slate-50 border-b-2 border-slate-100 rounded-xl focus:outline-none focus:border-teal-500 transition-all font-medium appearance-none">
-                <option>DHA Licensing Application</option>
+                <option>UAE Licensing Application</option>
                 <option>New Clinic Establishment</option>
                 <option>Multi-speciality Hospital Setup</option>
                 <option>License Transfer/Activation</option>
@@ -75,7 +74,7 @@ const Contact: React.FC = () => {
             </div>
             <div className="space-y-2">
               <label className="text-xs font-black uppercase text-slate-400 tracking-wider">Project Details</label>
-              <textarea rows={4} className="w-full px-5 py-4 bg-slate-50 border-b-2 border-slate-100 rounded-xl focus:outline-none focus:border-teal-500 transition-all font-medium resize-none" placeholder="Tell us about your healthcare vision..."></textarea>
+              <textarea rows={4} className="w-full px-5 py-4 bg-slate-50 border-b-2 border-slate-100 rounded-xl focus:outline-none focus:border-teal-500 transition-all font-medium resize-none" placeholder="Tell us about your project..."></textarea>
             </div>
             <motion.button 
               whileHover={{ scale: 1.02 }}

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -9,10 +8,10 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-teal-900/50">D</div>
+              <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-teal-900/50">H</div>
               <div className="flex flex-col">
-                <span className="font-bold text-lg leading-tight text-white uppercase tracking-wider">Dialaa Health</span>
-                <span className="text-[9px] tracking-[0.3em] uppercase text-teal-500 font-black">Consultancies</span>
+                <span className="font-bold text-lg leading-tight text-white uppercase tracking-wider">HEALTHCARE</span>
+                <span className="text-[9px] tracking-[0.3em] uppercase text-teal-500 font-black">Consultancy Group</span>
               </div>
             </div>
             <p className="text-slate-400 text-base leading-relaxed max-w-sm mb-6">
@@ -41,7 +40,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-8">Company</h4>
             <ul className="space-y-4 text-sm">
-              <li><a href="#about" className="hover:text-teal-400 transition-colors">About Dr. Maryam</a></li>
+              <li><a href="#about" className="hover:text-teal-400 transition-colors">Executive Bio</a></li>
               <li><a href="#contact" className="hover:text-teal-400 transition-colors">Consultation</a></li>
               <li><a href="#" className="hover:text-teal-400 transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-teal-400 transition-colors">Terms of Use</a></li>
@@ -50,7 +49,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-[11px] font-medium tracking-wide uppercase">
-          <p>© {new Date().getFullYear()} Dialaa Health Consultancies. UAE Healthcare Specialist.</p>
+          <p>© {new Date().getFullYear()} Healthcare Consultancy Group. UAE Healthcare Specialist.</p>
           <div className="flex items-center space-x-2 text-slate-400 group">
             <span>Powered by</span>
             <a 
